@@ -1,0 +1,44 @@
+{
+  "quick_picks": [
+    "rice", "beans", "chicken", "beef", "fish",
+    "tomatoes", "onions", "peppers", "plantain", "palm oil",
+    "garri", "egusi", "vegetable oil"
+  ],
+  "carbs": ["rice", "beans", "plantain", "yam", "garri", "egusi", "okra", "pounded yam"],
+  "proteins": ["chicken", "beef", "fish", "stockfish", "crayfish", "beans", "eggs"],
+  "meat": ["chicken", "beef"],
+  "global_substitutes": {
+    "spinach": ["pumpkin leaves", "ugwu"],
+    "pumpkin leaves": ["spinach", "ugwu"],
+    "peppers": ["scotch bonnet", "tatashe"],
+    "tomatoes": ["tomato paste"],
+    "onions": ["shallots"],
+    "beef": ["goat meat"],
+    "chicken": ["turkey"],
+    "palm oil": ["vegetable oil"],
+    "vegetable oil": ["palm oil"],
+    "garri": ["fufu"],
+    "fufu": ["garri", "pounded yam"]
+  },
+  "categories": {
+    "Carbs & staples": ["rice", "beans", "plantain", "yam", "garri", "egusi", "okra", "pounded yam"],
+    "Proteins": ["chicken", "beef", "fish", "stockfish", "crayfish", "eggs"],
+    "Vegetables & greens": [
+      "tomatoes", "onions", "peppers", "spinach", "cabbage",
+      "scent leaves", "utazi", "carrots", "green beans", "pumpkin leaves"
+    ],
+    "Oils & bases": ["palm oil", "vegetable oil", "groundnut oil"],
+    "Seasonings & spices": [
+      "ginger", "garlic", "thyme", "bay leaves", "suya spice",
+      "curry powder", "seasoning cubes"
+    ]
+  },
+  "display_names": {
+    "peppers": "Peppers (ata rodo / scotch bonnet)",
+    "pounded yam": "Pounded yam (iyan)",
+    "garri": "Garri / eba",
+    "scent leaves": "Scent leaves (nchuanwu)",
+    "utazi": "Utazi leaves",
+    "egusi": "Egusi (melon seeds)"
+  }
+}

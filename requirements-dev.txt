@@ -1,0 +1,3 @@
+# Local development / tests only (not required on Streamlit Cloud)
+-r requirements.txt
+pytest==8.3.5
