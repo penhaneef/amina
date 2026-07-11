@@ -32,7 +32,7 @@ _bootstrap()
 import streamlit as st
 
 from src.brand import APP_NAME, FAVICON_PATH, TAGLINE
-from src.data_loader import IMAGES_DIR, load_ingredient_config, load_recipes
+from src.data_loader import IMAGES_DIR, get_ingredient_config, get_recipes
 from src.matcher import assistant_message, score_and_bucket
 from src.pantry import load_saved_pantry, save_pantry
 from src.selection import (
@@ -64,8 +64,8 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-RECIPES = load_recipes()
-CONFIG = load_ingredient_config()
+RECIPES = get_recipes()
+CONFIG = get_ingredient_config()
 CARBS = set(CONFIG["carbs"])
 PROTEINS = set(CONFIG["proteins"])
 MEAT = set(CONFIG["meat"])
@@ -74,7 +74,8 @@ CATEGORIES = CONFIG["categories"]
 DISPLAY_NAMES = CONFIG.get("display_names", {})
 GLOBAL_SUBSTITUTES = CONFIG["global_substitutes"]
 
-DEFAULT_MAX_TIME = 45
+# Default 60 so everyday plates (stew ~40–50 min) are not hidden on first load.
+DEFAULT_MAX_TIME = 60
 
 # Every selectable ingredient (checkbox keys must cover this whole set).
 ALL_INGREDIENTS: set[str] = set(QUICK_PICKS)
@@ -324,14 +325,18 @@ def render_results(filters: dict) -> None:
             render_featured_recipe(featured, IMAGES_DIR)
         return
 
-    render_tier_section("ready_now", ready, available, IMAGES_DIR, GLOBAL_SUBSTITUTES, DISPLAY_NAMES, limit=3)
-    render_tier_section("almost_there", almost, available, IMAGES_DIR, GLOBAL_SUBSTITUTES, DISPLAY_NAMES, limit=3)
+    render_tier_section(
+        "ready_now", ready, available, IMAGES_DIR, GLOBAL_SUBSTITUTES, DISPLAY_NAMES, limit=5,
+    )
+    render_tier_section(
+        "almost_there", almost, available, IMAGES_DIR, GLOBAL_SUBSTITUTES, DISPLAY_NAMES, limit=5,
+    )
 
     if shop:
         with st.expander(f"Needs a shop run ({len(shop)} dishes) — not ready to cook yet"):
             render_tier_section(
                 "shop_run", shop, available, IMAGES_DIR, GLOBAL_SUBSTITUTES, DISPLAY_NAMES,
-                show_header=False, limit=5,
+                show_header=False, limit=8,
             )
 
 

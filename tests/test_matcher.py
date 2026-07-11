@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import unittest
 
-from src.data_loader import load_ingredient_config, load_recipes
+from src.data_loader import get_ingredient_config, get_recipes
 from src.matcher import (
     assistant_message,
     calculate_match_score,
@@ -14,8 +14,8 @@ from src.matcher import (
 class MatcherTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
-        cls.recipes = load_recipes()
-        cls.config = load_ingredient_config()
+        cls.recipes = get_recipes()
+        cls.config = get_ingredient_config()
         cls.carbs = set(cls.config["carbs"])
         cls.proteins = set(cls.config["proteins"])
         cls.meat = set(cls.config["meat"])

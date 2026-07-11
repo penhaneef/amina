@@ -349,23 +349,44 @@ def recipe_image_path(images_dir: Path, recipe: Dict) -> str | None:
     return str(path) if path.exists() else None
 
 
-def status_line(recipe: Dict, tier: Tier) -> str:
+def status_line(recipe: Dict, tier: Tier, display_names: Dict[str, str] | None = None) -> str:
+    names = display_names or {}
+    label = lambda item: display_name(item, names)
+
     if tier == "ready_now":
         if not recipe["missing"]:
             return "✅ You have everything for this dish."
-        extras = ", ".join(item.replace("_", " ").title() for item in sorted(recipe["missing"]))
+        extras = ", ".join(label(item) for item in sorted(recipe["missing"]))
         return f"✅ Core covered. Optional extras: {extras}"
 
-    missing_core = ", ".join(item.replace("_", " ").title() for item in sorted(recipe["missing_core"]))
+    missing_core = ", ".join(label(item) for item in sorted(recipe["missing_core"]))
     if tier == "almost_there":
         return f"🛒 Pick up: <strong>{missing_core}</strong>"
     return f"🛒 You still need: <strong>{missing_core}</strong>"
 
 
-def render_recipe_card(recipe: Dict, tier: Tier, show_medal: bool = False) -> None:
+def render_recipe_card(
+    recipe: Dict,
+    tier: Tier,
+    show_medal: bool = False,
+    display_names: Dict[str, str] | None = None,
+) -> None:
     meta = TIER_META[tier]
     medal = "🥇 " if show_medal else ""
     status_class = {"ready_now": "status-ready", "almost_there": "status-almost", "shop_run": "status-shop"}[tier]
+    aliases = recipe.get("aliases") or []
+    alias_html = ""
+    if aliases:
+        alias_html = (
+            "<p class=\"recipe-meta\" style=\"margin-top:0.15rem;opacity:0.9;\">"
+            f"Also known as: {', '.join(aliases)}</p>"
+        )
+    # Highlight full-plate cores (e.g. pap with akara) when still missing
+    names = display_names or {}
+    plate_note = ""
+    if recipe.get("missing_core") and ("pap" in recipe["missing_core"] or "garri" in recipe["missing_core"] or "pounded yam" in recipe["missing_core"]):
+        need = ", ".join(display_name(i, names) for i in sorted(recipe["missing_core"]))
+        plate_note = f"<p class=\"recipe-status status-shop\">🍽️ Full plate still needs: <strong>{need}</strong></p>"
 
     st.markdown(
         f"""
@@ -377,8 +398,10 @@ def render_recipe_card(recipe: Dict, tier: Tier, show_medal: bool = False) -> No
                 {recipe['match_percent']}% match · ⏱️ {recipe['time']} min ·
                 👨‍👩‍👧 {recipe['servings']} · 🌶️ {recipe['spice']} · {recipe['region']}
             </p>
+            {alias_html}
             <p class="recipe-vibe">{recipe['vibe']}</p>
-            <p class="recipe-status {status_class}">{status_line(recipe, tier)}</p>
+            <p class="recipe-status {status_class}">{status_line(recipe, tier, names)}</p>
+            {plate_note}
         </div>
         """,
         unsafe_allow_html=True,
@@ -459,14 +482,15 @@ def render_tier_section(
 
     for index, recipe in enumerate(recipes[:limit]):
         image_path = recipe_image_path(images_dir, recipe)
+        medal = tier == "ready_now" and index == 0
         if image_path:
             img_col, text_col = st.columns([1, 2])
             with img_col:
                 st.image(image_path, width="stretch")
             with text_col:
-                render_recipe_card(recipe, tier, show_medal=(tier == "ready_now" and index == 0))
+                render_recipe_card(recipe, tier, show_medal=medal, display_names=display_names)
         else:
-            render_recipe_card(recipe, tier, show_medal=(tier == "ready_now" and index == 0))
+            render_recipe_card(recipe, tier, show_medal=medal, display_names=display_names)
 
         # Keyed expanders so open/closed state is not mixed across recipe swaps.
         with st.expander(

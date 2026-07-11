@@ -2,7 +2,11 @@ from __future__ import annotations
 
 import unittest
 
-from src.data_loader import IMAGES_DIR, load_ingredient_config, load_recipes
+from src.data_loader import IMAGES_DIR, get_ingredient_config, get_recipes
+
+# Tests call the stamp-aware loaders (same data as the app).
+load_recipes = get_recipes
+load_ingredient_config = get_ingredient_config
 
 
 class DataTests(unittest.TestCase):

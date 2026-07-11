@@ -35,7 +35,7 @@
         "tomato paste"
       ]
     },
-    "time": 50,
+    "time": 45,
     "servings": 4,
     "spice": "Medium",
     "vibe": "The ultimate Nigerian crowd-pleaser. Perfect when you want something that feels like home.",
@@ -492,10 +492,10 @@
     "name": "Akara & Pap (Quick Breakfast)",
     "core_ingredients": [
       "beans",
+      "pap",
       "onions",
       "peppers",
-      "vegetable oil",
-      "pap"
+      "vegetable oil"
     ],
     "other_ingredients": [
       "seasoning cubes"
@@ -524,11 +524,17 @@
     "budget": true,
     "ramadan": false,
     "steps": [
-      "Make the pap: mix ogi/akamu with a little cold water to a smooth paste, then stir into hot water (or heat gently) until thick and glossy. Sweeten if you like. Keep warm.",
-      "Peel beans and blend with peppers and onions to a thick paste.",
-      "Whisk in salt and seasoning. The mix should hold its shape.",
+      "PAP (ogi/akamu): Mix dry pap with a little cold water to a smooth paste. Stir into boiling water (or heat gently) until thick and glossy. Sweeten if you like. Keep warm — this is half the dish.",
+      "AKARA: Peel beans and blend with peppers and onions to a thick paste.",
+      "Whisk in salt and seasoning. The mix should hold its shape on a spoon.",
       "Drop spoonfuls into hot oil. Fry until deep golden on both sides.",
-      "Drain akara on paper. Serve hot with the pap (or soft bread if that is your substitute)."
+      "Drain akara on paper. Serve hot with the warm pap (or soft bread as a substitute for pap)."
+    ],
+    "aliases": [
+      "akara",
+      "bean cake",
+      "ogi",
+      "akamu"
     ]
   },
   {
@@ -755,7 +761,7 @@
   },
   {
     "id": "white-rice-stew",
-    "name": "White Rice & Tomato Stew",
+    "name": "Nigerian Tomato Stew with White Rice",
     "core_ingredients": [
       "rice",
       "tomatoes",
@@ -793,10 +799,10 @@
         "tomato paste"
       ]
     },
-    "time": 50,
+    "time": 40,
     "servings": 4,
     "spice": "Medium",
-    "vibe": "Everyday Nigerian plate. Plain rice with deep red stew — always welcome at the table.",
+    "vibe": "Everyday Nigerian plate: plain rice with deep red tomato stew. Search-friendly as stew, tomato stew, or rice and stew.",
     "emoji": "🍛",
     "image": "white-rice-stew.jpg",
     "region": "General",
@@ -809,6 +815,12 @@
       "Blend tomatoes, peppers, onions, ginger, and garlic.",
       "Heat oil, fry the blend until thick, dark red, and oil rises. Season with cubes.",
       "Add chicken and a splash of stock. Simmer 10 minutes. Serve stew over white rice."
+    ],
+    "aliases": [
+      "tomato stew",
+      "nigerian stew",
+      "stew and rice",
+      "rice and stew"
     ]
   }
 ]

@@ -16,11 +16,25 @@ def load_json(name: str) -> Any:
         return json.load(handle)
 
 
+def _file_stamp(name: str) -> float:
+    """Bust Streamlit cache when JSON on disk changes (Cloud redeploys + local edits)."""
+    path = DATA_DIR / name
+    return path.stat().st_mtime if path.exists() else 0.0
+
+
 @st.cache_data(show_spinner=False)
-def load_recipes() -> List[Dict]:
+def load_recipes(_stamp: float = 0.0) -> List[Dict]:
     return load_json("recipes.json")
 
 
 @st.cache_data(show_spinner=False)
-def load_ingredient_config() -> Dict:
+def load_ingredient_config(_stamp: float = 0.0) -> Dict:
     return load_json("ingredients.json")
+
+
+def get_recipes() -> List[Dict]:
+    return load_recipes(_file_stamp("recipes.json"))
+
+
+def get_ingredient_config() -> Dict:
+    return load_ingredient_config(_file_stamp("ingredients.json"))
