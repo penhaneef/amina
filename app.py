@@ -144,7 +144,7 @@ def _btn_width_kwargs() -> dict:
 
 
 def render_kitchen() -> dict:
-    st.markdown('<p class="kitchen-panel-title">Quick picks</p>', unsafe_allow_html=True)
+    st.markdown("##### Quick picks")
     st.caption("Tap what you have — fastest way to start.")
 
     cols = st.columns(3)
@@ -192,7 +192,7 @@ def render_kitchen() -> dict:
                 st.info("Nothing saved yet — tick ingredients and press Save kitchen.")
 
     st.divider()
-    st.markdown('<p class="kitchen-panel-title">All ingredients</p>', unsafe_allow_html=True)
+    st.markdown("##### All ingredients")
 
     search = st.text_input(
         "Search ingredients",
@@ -222,16 +222,22 @@ def render_kitchen() -> dict:
     selected = rebuild_selected(ALL_INGREDIENTS)
 
     if selected:
+        from html import escape as _escape
+        from textwrap import dedent as _dedent
+
         chips = "".join(
-            f'<span class="chip">{display_name(item, DISPLAY_NAMES)}</span>'
+            f'<span class="chip">{_escape(display_name(item, DISPLAY_NAMES))}</span>'
             for item in sorted(selected)
         )
-        st.markdown(f'<div class="chip-row">{chips}</div>', unsafe_allow_html=True)
+        st.markdown(
+            _dedent(f'<div class="chip-row">{chips}</div>').strip(),
+            unsafe_allow_html=True,
+        )
 
     st.divider()
     settings_left, settings_right = st.columns([3, 2])
     with settings_left:
-        st.markdown('<p class="kitchen-panel-title">Settings</p>', unsafe_allow_html=True)
+        st.markdown("##### Settings")
     with settings_right:
         if st.button("Reset filters", key="reset_filters", **_btn_width_kwargs()):
             reset_filters()
@@ -278,7 +284,7 @@ def render_results(filters: dict) -> None:
 
     if not selected:
         st.info("Tick ingredients in **My Kitchen** to see what you can cook.")
-        st.markdown("**Demo:** tap **Jollof demo** — Jollof appears under **Cook this now**.")
+        st.markdown("**Demo:** tap **Jollof demo** — Jollof appears at the top of suggestions by match %.")
         featured = featured_recipe_of_day()
         if featured:
             render_featured_recipe(featured, IMAGES_DIR)
@@ -306,8 +312,10 @@ def render_results(filters: dict) -> None:
     ranked = ranked_matches(buckets)
 
     headline, detail = assistant_message(ready, almost, shop, available)
+    from html import escape as _escape
+
     chips = "".join(
-        f'<span class="chip">{display_name(item, DISPLAY_NAMES)}</span>'
+        f'<span class="chip">{_escape(display_name(item, DISPLAY_NAMES))}</span>'
         for item in sorted(selected)
     )
     render_assistant_box(headline, detail, chips)

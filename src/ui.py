@@ -1,13 +1,25 @@
 from __future__ import annotations
 
 import base64
+import html
 from pathlib import Path
+from textwrap import dedent
 from typing import Dict, List, Set
 
 import streamlit as st
 
 from src.brand import APP_NAME, ASSISTANT_LABEL, LOGO_PATH, SUBTITLE, TAGLINE
 from src.matcher import Tier
+
+
+def _esc(value: object) -> str:
+    """Escape text for safe insertion into HTML."""
+    return html.escape(str(value), quote=True)
+
+
+def _html(snippet: str) -> None:
+    """Render HTML without leading indent (avoids Streamlit treating it as a code block)."""
+    st.markdown(dedent(snippet).strip(), unsafe_allow_html=True)
 
 TIER_META = {
     "ready_now": {
@@ -41,9 +53,10 @@ TIER_META = {
 
 
 def inject_styles() -> None:
+    # Styles must not be indented as a markdown code fence — keep <style> left-aligned.
     st.markdown(
         """
-        <style>
+<style>
         @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
         html, body, [class*="css"] { font-family: 'Nunito', sans-serif; }
 
@@ -279,7 +292,12 @@ def inject_styles() -> None:
             .panel-results h3 { display: none; }
             div[data-testid="stButton"] button { min-height: 2.6rem; }
         }
-        </style>
+        /* Native Streamlit recipe cards (no raw HTML leak) */
+        div[data-testid="stVerticalBlockBorderWrapper"] {
+            background: #FFFFFF;
+            border-radius: 14px !important;
+        }
+</style>
         """,
         unsafe_allow_html=True,
     )
@@ -296,44 +314,42 @@ def render_hero() -> None:
     """Brand header: logo + wordmark, clear hierarchy, safe under Streamlit chrome."""
     logo_uri = _logo_data_uri()
     logo_html = (
-        f'<img class="hero-logo" src="{logo_uri}" alt="{APP_NAME} logo" width="64" height="64" />'
+        f'<img class="hero-logo" src="{logo_uri}" alt="{_esc(APP_NAME)} logo" width="64" height="64" />'
         if logo_uri
         else ""
     )
-    st.markdown(
+    _html(
         f"""
         <header class="hero-banner" role="banner">
-            <div class="hero-row">
-                {logo_html}
-                <div class="hero-text">
-                    <p class="hero-kicker">Kitchen companion</p>
-                    <h1 class="hero-title">{APP_NAME}</h1>
-                    <p class="hero-tagline">{TAGLINE}</p>
-                    <p class="hero-sub">{SUBTITLE}</p>
-                </div>
+          <div class="hero-row">
+            {logo_html}
+            <div class="hero-text">
+              <p class="hero-kicker">Kitchen companion</p>
+              <h1 class="hero-title">{_esc(APP_NAME)}</h1>
+              <p class="hero-tagline">{_esc(TAGLINE)}</p>
+              <p class="hero-sub">{_esc(SUBTITLE)}</p>
             </div>
-            <hr class="hero-divider" />
-            <div class="hero-pills" aria-label="Highlights">
-                <span class="hero-pill">🇳🇬 Nigerian dishes</span>
-                <span class="hero-pill">⚡ Quick picks</span>
-                <span class="hero-pill">👩🏽‍🍳 Amounts &amp; steps</span>
-            </div>
+          </div>
+          <hr class="hero-divider" />
+          <div class="hero-pills" aria-label="Highlights">
+            <span class="hero-pill">🇳🇬 Nigerian dishes</span>
+            <span class="hero-pill">⚡ Quick picks</span>
+            <span class="hero-pill">👩🏽‍🍳 Amounts &amp; steps</span>
+          </div>
         </header>
-        """,
-        unsafe_allow_html=True,
+        """
     )
 
 
 def render_assistant_box(headline: str, detail: str, chips_html: str) -> None:
-    st.markdown(
+    _html(
         f"""
         <div class="assistant-box">
-            <strong>👩🏽‍🍳 {ASSISTANT_LABEL}</strong><br>{headline}<br>
-            <span style="font-size:0.92rem;">{detail}</span>
-            <div class="chip-row">{chips_html}</div>
+          <strong>👩🏽‍🍳 {_esc(ASSISTANT_LABEL)}</strong><br>{_esc(headline)}<br>
+          <span style="font-size:0.92rem;">{_esc(detail)}</span>
+          <div class="chip-row">{chips_html}</div>
         </div>
-        """,
-        unsafe_allow_html=True,
+        """
     )
 
 
@@ -350,6 +366,7 @@ def recipe_image_path(images_dir: Path, recipe: Dict) -> str | None:
 
 
 def status_line(recipe: Dict, tier: Tier, display_names: Dict[str, str] | None = None) -> str:
+    """Plain-text / markdown status (no raw HTML — avoids Streamlit leaking tags)."""
     names = display_names or {}
     label = lambda item: display_name(item, names)
 
@@ -361,8 +378,8 @@ def status_line(recipe: Dict, tier: Tier, display_names: Dict[str, str] | None =
 
     missing_core = ", ".join(label(item) for item in sorted(recipe["missing_core"]))
     if tier == "almost_there":
-        return f"🛒 Pick up: <strong>{missing_core}</strong>"
-    return f"🛒 You still need: <strong>{missing_core}</strong>"
+        return f"🛒 Pick up: **{missing_core}**"
+    return f"🛒 You still need: **{missing_core}**"
 
 
 def render_recipe_card(
@@ -371,41 +388,27 @@ def render_recipe_card(
     show_medal: bool = False,
     display_names: Dict[str, str] | None = None,
 ) -> None:
+    """Native Streamlit card — no custom HTML body (fixes raw tag text on page)."""
     meta = TIER_META[tier]
     medal = "🥇 " if show_medal else ""
-    status_class = {"ready_now": "status-ready", "almost_there": "status-almost", "shop_run": "status-shop"}[tier]
-    aliases = recipe.get("aliases") or []
-    alias_html = ""
-    if aliases:
-        alias_html = (
-            "<p class=\"recipe-meta\" style=\"margin-top:0.15rem;opacity:0.9;\">"
-            f"Also known as: {', '.join(aliases)}</p>"
-        )
-    # Highlight full-plate cores (e.g. pap with akara) when still missing
     names = display_names or {}
-    plate_note = ""
-    if recipe.get("missing_core") and ("pap" in recipe["missing_core"] or "garri" in recipe["missing_core"] or "pounded yam" in recipe["missing_core"]):
-        need = ", ".join(display_name(i, names) for i in sorted(recipe["missing_core"]))
-        plate_note = f"<p class=\"recipe-status status-shop\">🍽️ Full plate still needs: <strong>{need}</strong></p>"
+    aliases = recipe.get("aliases") or []
 
-    st.markdown(
-        f"""
-        <div class="recipe-card {meta['card_class']}">
-            <p class="recipe-name">{medal}{recipe['emoji']} {recipe['name']}
-                <span class="badge {meta['badge_class']}">{meta['badge']}</span>
-            </p>
-            <p class="recipe-meta">
-                {recipe['match_percent']}% match · ⏱️ {recipe['time']} min ·
-                👨‍👩‍👧 {recipe['servings']} · 🌶️ {recipe['spice']} · {recipe['region']}
-            </p>
-            {alias_html}
-            <p class="recipe-vibe">{recipe['vibe']}</p>
-            <p class="recipe-status {status_class}">{status_line(recipe, tier, names)}</p>
-            {plate_note}
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+    with st.container(border=True):
+        st.markdown(
+            f"**{medal}{recipe.get('emoji', '🍲')} {recipe['name']}**  \n"
+            f"`{meta['badge']}` · **{recipe['match_percent']}%** match · "
+            f"⏱️ {recipe['time']} min · 👨‍👩‍👧 {recipe['servings']} · "
+            f"🌶️ {recipe['spice']} · {recipe['region']}"
+        )
+        if aliases:
+            st.caption("Also known as: " + ", ".join(aliases))
+        st.markdown(f"*{recipe.get('vibe', '')}*")
+        st.markdown(status_line(recipe, tier, names))
+        missing_core = recipe.get("missing_core") or set()
+        if missing_core & {"pap", "garri", "pounded yam", "fufu"}:
+            need = ", ".join(display_name(i, names) for i in sorted(missing_core))
+            st.caption(f"🍽️ Full plate still needs: {need}")
 
 
 def render_ingredient_breakdown(
@@ -470,14 +473,13 @@ def render_tier_section(
 
     if show_header:
         meta = TIER_META[tier]
-        st.markdown(
+        _html(
             f"""
             <div class="tier-band {meta['section_class']}">
-                <p class="tier-title">{meta['icon']} {meta['title']}</p>
-                <p class="tier-sub">{meta['subtitle']}</p>
+              <p class="tier-title">{meta['icon']} {_esc(meta['title'])}</p>
+              <p class="tier-sub">{_esc(meta['subtitle'])}</p>
             </div>
-            """,
-            unsafe_allow_html=True,
+            """
         )
 
     _render_recipe_list(
@@ -504,14 +506,13 @@ def render_ranked_suggestions(
     if not recipes:
         return
 
-    st.markdown(
+    _html(
         """
         <div class="tier-band tier-ready">
-            <p class="tier-title">📊 Suggestions by match %</p>
-            <p class="tier-sub">Highest match first — badges still show Ready / Almost / Shop.</p>
+          <p class="tier-title">📊 Suggestions by match %</p>
+          <p class="tier-sub">Highest match first — badges still show Ready / Almost / Shop.</p>
         </div>
-        """,
-        unsafe_allow_html=True,
+        """
     )
     _render_recipe_list(
         recipes[:limit],
@@ -620,14 +621,15 @@ def render_featured_recipe(recipe: Dict, images_dir: Path) -> None:
 
 
 def render_footer() -> None:
-    st.markdown(
+    _html(
         f"""
         <p class="footer-note">
-        <strong>{APP_NAME}</strong> suggests meals from ingredients you tick — always use your judgment in the kitchen.
-        Food photos from <a href="https://commons.wikimedia.org/wiki/Category:Cuisine_of_Nigeria">Wikimedia Commons</a> (CC licenses).
+          <strong>{_esc(APP_NAME)}</strong> suggests meals from ingredients you tick — always use your judgment in the kitchen.
+          Food photos from
+          <a href="https://commons.wikimedia.org/wiki/Category:Cuisine_of_Nigeria">Wikimedia Commons</a>
+          (CC licenses).
         </p>
-        """,
-        unsafe_allow_html=True,
+        """
     )
 
 
