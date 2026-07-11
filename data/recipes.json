@@ -2,19 +2,20 @@
   {
     "id": "jollof-rice",
     "name": "Classic Jollof Rice",
-    "core_ingredients": ["rice", "tomatoes", "onions", "peppers"],
-    "other_ingredients": ["vegetable oil", "chicken", "thyme", "bay leaves"],
+    "core_ingredients": ["rice", "tomatoes", "onions", "peppers", "vegetable oil"],
+    "other_ingredients": ["chicken", "thyme", "bay leaves", "seasoning cubes"],
     "measurements": {
       "rice": "3 cups (uncooked)",
-      "tomatoes": "4–5 medium (or 1 tin paste + 2 fresh)",
+      "tomatoes": "4–5 medium (or tomato paste + 2 fresh)",
       "onions": "2 medium",
       "peppers": "3–4 scotch bonnet / tatashe (to taste)",
       "vegetable oil": "1/2 cup",
-      "chicken": "500 g–1 kg pieces",
+      "chicken": "500 g–1 kg pieces (optional protein)",
       "thyme": "1 tsp dried",
-      "bay leaves": "2 leaves"
+      "bay leaves": "2 leaves",
+      "seasoning cubes": "2 cubes"
     },
-    "substitutes": {"chicken": ["beef", "fish"]},
+    "substitutes": {"chicken": ["beef", "fish"], "tomatoes": ["tomato paste"]},
     "time": 50,
     "servings": 4,
     "spice": "Medium",
@@ -26,30 +27,34 @@
     "budget": false,
     "ramadan": true,
     "steps": [
-      "Blend tomatoes, peppers, and half the onions into a smooth mix.",
+      "Blend tomatoes (or tomato paste with a little water), peppers, and half the onions into a smooth mix.",
       "Heat oil in a pot. Fry remaining onions, then add the blend. Cook until thick and red.",
-      "Stir in washed rice, thyme, bay leaves, and seasoning. Add stock or water to cover.",
+      "Stir in washed rice, thyme, bay leaves, and seasoning cubes. Add stock or water to cover.",
       "Cover and cook on medium-low 30–40 mins, stirring occasionally, until rice is tender.",
-      "Rest 5 minutes off heat. Serve hot with chicken or salad on the side."
+      "Rest 5 minutes off heat. Serve hot; add chicken or other protein on the side if you have it."
     ]
   },
   {
     "id": "egusi-soup",
     "name": "Egusi Soup + Pounded Yam",
     "core_ingredients": ["egusi", "palm oil", "onions", "peppers", "spinach", "pounded yam"],
-    "other_ingredients": ["beef", "stockfish", "crayfish"],
+    "other_ingredients": ["beef", "stockfish", "crayfish", "seasoning cubes"],
     "measurements": {
       "egusi": "2 cups ground melon seeds",
       "palm oil": "1/2–3/4 cup",
       "onions": "1 large",
       "peppers": "3–4 (to taste)",
-      "spinach": "2 large bunches (or ugwu / pumpkin leaves)",
-      "pounded yam": "1 pack flour, or fresh yam for 5 people",
+      "spinach": "2 large bunches (or pumpkin leaves)",
+      "pounded yam": "1 pack flour, or fresh yam for 5 people (or garri/fufu)",
       "beef": "500 g–1 kg",
       "stockfish": "1 medium piece, soaked",
-      "crayfish": "3–4 tbsp ground"
+      "crayfish": "3–4 tbsp ground",
+      "seasoning cubes": "2 cubes"
     },
-    "substitutes": {"spinach": ["pumpkin leaves"], "pounded yam": ["garri", "fufu"]},
+    "substitutes": {
+      "spinach": ["pumpkin leaves"],
+      "pounded yam": ["garri", "fufu"]
+    },
     "time": 65,
     "servings": 5,
     "spice": "Hot",
@@ -64,26 +69,28 @@
       "Season and boil beef until tender. Reserve stock.",
       "Blend peppers and onions. Fry palm oil, add blend, and cook down.",
       "Stir in ground egusi. Cook until it thickens and oil floats.",
-      "Add stock, stockfish, crayfish, and meat. Simmer 15 minutes.",
-      "Add spinach, simmer 5 more minutes. Serve with pounded yam or garri."
+      "Add stock, stockfish, crayfish, seasoning, and meat. Simmer 15 minutes.",
+      "Add spinach, simmer 5 more minutes.",
+      "Prepare swallow: pound yam, or make eba from garri, or prepare fufu. Serve soup with the swallow."
     ]
   },
   {
     "id": "fish-pepper-soup",
     "name": "Fish Pepper Soup",
     "core_ingredients": ["fish", "peppers", "onions", "ginger", "garlic"],
-    "other_ingredients": ["utazi", "scent leaves", "crayfish"],
+    "other_ingredients": ["utazi", "scent leaves", "crayfish", "seasoning cubes"],
     "measurements": {
-      "fish": "1–1.2 kg whole or steaks (catfish/tilapia)",
+      "fish": "1–1.2 kg whole or steaks (catfish, tilapia, or any firm fish)",
       "peppers": "4–6 scotch bonnet (adjust heat)",
       "onions": "1 medium",
       "ginger": "1 thumb-size piece",
       "garlic": "3–4 cloves",
       "utazi": "a small handful, shredded",
       "scent leaves": "a small handful",
-      "crayfish": "2 tbsp ground"
+      "crayfish": "2 tbsp ground",
+      "seasoning cubes": "1–2 cubes"
     },
-    "substitutes": {"fish": ["catfish", "tilapia"]},
+    "substitutes": {},
     "time": 35,
     "servings": 4,
     "spice": "Very Hot",
@@ -95,7 +102,7 @@
     "budget": true,
     "ramadan": true,
     "steps": [
-      "Clean fish and cut into chunks. Season lightly with salt.",
+      "Clean fish and cut into chunks. Season lightly with salt and seasoning cube.",
       "Boil water with blended peppers, onions, ginger, and garlic.",
       "Add fish and crayfish. Cook gently 12–15 mins — don't stir too much.",
       "Add scent leaves and utazi. Simmer 3 minutes and serve hot."
@@ -105,14 +112,15 @@
     "id": "ewa-dodo",
     "name": "Beans & Plantain (Ewa Dodo)",
     "core_ingredients": ["beans", "plantain", "palm oil", "onions", "peppers"],
-    "other_ingredients": ["crayfish"],
+    "other_ingredients": ["crayfish", "seasoning cubes"],
     "measurements": {
       "beans": "2 cups honey beans / black-eyed peas",
       "plantain": "3–4 ripe plantains",
       "palm oil": "1/3 cup",
       "onions": "1 large",
       "peppers": "2–3",
-      "crayfish": "2 tbsp ground"
+      "crayfish": "2 tbsp ground",
+      "seasoning cubes": "1 cube"
     },
     "substitutes": {},
     "time": 40,
@@ -127,9 +135,9 @@
     "ramadan": true,
     "steps": [
       "Pick stones from beans. Boil with onions until very soft.",
-      "Mash or stir beans to a thick porridge. Season with salt and crayfish.",
-      "Fry pepper sauce in palm oil until rich and red.",
-      "Slice and fry ripe plantain until golden.",
+      "Mash or stir beans to a thick porridge. Season with salt, crayfish, and seasoning.",
+      "Fry pepper sauce in palm oil until rich and red. Stir into beans or serve on top.",
+      "Slice and fry ripe plantain until golden (the dodo).",
       "Serve beans with fried plantain on the side."
     ]
   },
@@ -137,19 +145,23 @@
     "id": "okra-soup",
     "name": "Okra Soup with Fufu or Garri",
     "core_ingredients": ["okra", "palm oil", "onions", "peppers", "spinach", "garri"],
-    "other_ingredients": ["beef", "stockfish", "crayfish"],
+    "other_ingredients": ["beef", "stockfish", "crayfish", "seasoning cubes"],
     "measurements": {
       "okra": "500 g fresh (or 3 cups chopped)",
       "palm oil": "1/3–1/2 cup",
       "onions": "1 medium",
       "peppers": "2–3",
       "spinach": "1 large bunch",
-      "garri": "2–3 cups for eba",
+      "garri": "2–3 cups for eba (or use fufu / pounded yam)",
       "beef": "400–600 g",
       "stockfish": "1 small piece",
-      "crayfish": "2–3 tbsp ground"
+      "crayfish": "2–3 tbsp ground",
+      "seasoning cubes": "2 cubes"
     },
-    "substitutes": {"garri": ["fufu", "pounded yam"], "spinach": ["pumpkin leaves"]},
+    "substitutes": {
+      "garri": ["fufu", "pounded yam"],
+      "spinach": ["pumpkin leaves"]
+    },
     "time": 45,
     "servings": 4,
     "spice": "Medium",
@@ -165,23 +177,24 @@
       "Blend okra lightly (or chop finely). Fry pepper-onion mix in palm oil.",
       "Add okra and stock. Stir until draw starts forming.",
       "Add meat, stockfish, crayfish, and spinach. Simmer 10 minutes.",
-      "Serve with soaked garri (eba) or fufu."
+      "Make eba from garri, or prepare fufu/pounded yam. Serve soup with the swallow."
     ]
   },
   {
     "id": "suya-chicken",
     "name": "Suya-Spiced Grilled Chicken + Salad",
-    "core_ingredients": ["chicken", "peppers", "onions"],
-    "other_ingredients": ["suya spice", "tomatoes", "cabbage"],
+    "core_ingredients": ["chicken", "suya spice", "onions", "peppers", "tomatoes", "cabbage"],
+    "other_ingredients": ["vegetable oil"],
     "measurements": {
       "chicken": "600–800 g boneless or thighs",
-      "peppers": "2 (for salad / heat)",
-      "onions": "1 large",
       "suya spice": "3–4 tbsp",
+      "onions": "1 large",
+      "peppers": "2 (for salad / heat)",
       "tomatoes": "2 medium",
-      "cabbage": "1/4 small head, shredded"
+      "cabbage": "1/4 small head, shredded",
+      "vegetable oil": "2–3 tbsp for coating / grill"
     },
-    "substitutes": {"chicken": ["beef suya cuts"]},
+    "substitutes": {"chicken": ["beef"]},
     "time": 30,
     "servings": 3,
     "spice": "Hot",
@@ -196,7 +209,7 @@
       "Cut chicken into bite-size pieces. Coat with suya spice and a little oil.",
       "Grill or pan-sear on high heat until charred and cooked through.",
       "Toss sliced tomatoes, cabbage, onions, and peppers for a fresh salad.",
-      "Serve chicken over salad while still warm."
+      "Serve hot suya chicken over the salad."
     ]
   },
   {
@@ -228,17 +241,17 @@
     "ramadan": true,
     "steps": [
       "Parboil rice, drain, and spread to cool slightly.",
-      "Stir-fry diced chicken in hot oil until golden. Set aside.",
-      "Fry onions and peppers. Add carrots, green beans, curry, and seasoning.",
+      "Stir-fry diced chicken (or beef/liver) in hot oil until golden. Set aside.",
+      "Fry onions and peppers. Add carrots, green beans, curry powder, and seasoning cubes.",
       "Toss in rice. Stir-fry on high heat until evenly coloured and heated through.",
-      "Return chicken, mix once more, and serve immediately."
+      "Return protein, mix once more, and serve immediately."
     ]
   },
   {
     "id": "yam-porridge",
     "name": "Yam Porridge (Asaro)",
     "core_ingredients": ["yam", "palm oil", "onions", "peppers", "tomatoes"],
-    "other_ingredients": ["crayfish", "spinach", "stockfish"],
+    "other_ingredients": ["crayfish", "spinach", "stockfish", "seasoning cubes"],
     "measurements": {
       "yam": "1 medium tuber (about 1–1.2 kg)",
       "palm oil": "1/3 cup",
@@ -247,7 +260,8 @@
       "tomatoes": "2–3 medium",
       "crayfish": "2 tbsp ground",
       "spinach": "1 small bunch",
-      "stockfish": "1 small piece (optional)"
+      "stockfish": "1 small piece (optional)",
+      "seasoning cubes": "1–2 cubes"
     },
     "substitutes": {"yam": ["sweet potato"]},
     "time": 35,
@@ -261,8 +275,8 @@
     "budget": true,
     "ramadan": true,
     "steps": [
-      "Peel and cube yam. Rinse and set aside.",
-      "Fry pepper-tomato-onion mix in palm oil until thick.",
+      "Peel and cube yam (or sweet potato). Rinse and set aside.",
+      "Fry pepper-tomato-onion mix in palm oil until thick. Add seasoning.",
       "Add yam and enough water to cover. Cook until yam softens.",
       "Mash lightly in the pot for a porridge texture.",
       "Add crayfish, stockfish, and spinach. Simmer 5 minutes and serve."
@@ -295,7 +309,7 @@
     "ramadan": true,
     "steps": [
       "Peel beans (or use bean flour). Blend with peppers and onions until smooth.",
-      "Mix in oil, seasoning, and crayfish. Adjust thickness with a little water.",
+      "Mix in oil, seasoning cubes, and crayfish. Adjust thickness with a little water.",
       "Pour into moi moi wraps or bowls. Add egg slices if using.",
       "Steam 45–55 minutes until firm and cooked through.",
       "Cool slightly before unwrapping. Serve warm."
@@ -309,7 +323,7 @@
     "measurements": {
       "rice": "3 cups soft rice (for tuwo)",
       "pumpkin leaves": "2 large bunches (or spinach)",
-      "groundnut oil": "1/2 cup (or 1 cup groundnut paste + oil)",
+      "groundnut oil": "1/2 cup (or groundnut paste cooked out with a little oil)",
       "onions": "1 large",
       "peppers": "3–4",
       "beef": "500 g–1 kg",
@@ -328,10 +342,10 @@
     "ramadan": true,
     "steps": [
       "Boil soft rice with extra water until very soft. Mash into tuwo and set aside.",
-      "Blend peppers and onions. Cook groundnut paste with the blend until oil separates.",
-      "Add beef stock, seasoning, and cooked beef. Simmer 20 minutes.",
-      "Stir in pumpkin leaves. Cook 5 more minutes.",
-      "Serve miyan taushe with tuwo shinkafa."
+      "Blend peppers and onions. Cook groundnut paste or groundnut oil with the blend until fragrant and thick.",
+      "Add beef stock, seasoning cubes, and cooked beef. Simmer 20 minutes.",
+      "Stir in pumpkin leaves (or spinach). Cook 5 more minutes.",
+      "Serve miyan taushe with tuwo shinkafa (the mashed rice)."
     ]
   },
   {
@@ -347,7 +361,7 @@
       "pap": "1–1½ cups dry ogi/akamu (or ready pap for 3 people)",
       "seasoning cubes": "1 cube (optional)"
     },
-    "substitutes": {"pap": ["bread", "agege bread"]},
+    "substitutes": {"pap": ["bread"]},
     "time": 25,
     "servings": 3,
     "spice": "Mild",

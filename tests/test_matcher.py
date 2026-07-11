@@ -45,13 +45,13 @@ class MatcherTests(unittest.TestCase):
         self.assertEqual(buckets["shop_run"], [])
 
     def test_jollof_core_is_ready_now(self) -> None:
-        selected = {"rice", "tomatoes", "onions", "peppers"}
+        selected = {"rice", "tomatoes", "onions", "peppers", "vegetable oil"}
         buckets = self.bucket(selected)
         ready_names = [item["name"] for item in buckets["ready_now"]]
         self.assertIn("Classic Jollof Rice", ready_names)
 
     def test_jollof_missing_pepper_is_almost_not_ready(self) -> None:
-        selected = {"rice", "tomatoes", "onions"}
+        selected = {"rice", "tomatoes", "onions", "vegetable oil"}
         jollof = self.score(selected, "jollof-rice")
         self.assertEqual(classify_tier(jollof), "almost_there")
         self.assertFalse(jollof["has_core"])
@@ -86,7 +86,9 @@ class MatcherTests(unittest.TestCase):
         self.assertNotIn("Okra Soup with Fufu or Garri", excluded_names)
 
     def test_no_meat_filter_excludes_suya(self) -> None:
-        selected = {"chicken", "peppers", "onions", "suya spice", "tomatoes", "cabbage"}
+        selected = {
+            "chicken", "peppers", "onions", "suya spice", "tomatoes", "cabbage", "vegetable oil",
+        }
         _, excluded = score_and_bucket(
             self.recipes,
             selected,
@@ -99,6 +101,17 @@ class MatcherTests(unittest.TestCase):
         )
         excluded_names = [item["name"] for item in excluded]
         self.assertIn("Suya-Spiced Grilled Chicken + Salad", excluded_names)
+
+    def test_suya_requires_spice_and_salad_core(self) -> None:
+        """Chicken alone must not unlock 'Suya + Salad' without spice and salad veg."""
+        weak = self.score({"chicken", "peppers", "onions"}, "suya-chicken")
+        self.assertFalse(weak["has_core"])
+        self.assertIn("suya spice", weak["missing_core"])
+        full = self.score(
+            {"chicken", "suya spice", "onions", "peppers", "tomatoes", "cabbage"},
+            "suya-chicken",
+        )
+        self.assertTrue(full["has_core"])
 
     def test_time_filter_excludes_long_recipes(self) -> None:
         buckets, excluded = score_and_bucket(
@@ -150,14 +163,14 @@ class MatcherTests(unittest.TestCase):
         """Balance bonus only expands the denominator when the recipe can be balanced."""
         full = {
             "rice", "tomatoes", "onions", "peppers",
-            "vegetable oil", "chicken", "thyme", "bay leaves",
+            "vegetable oil", "chicken", "thyme", "bay leaves", "seasoning cubes",
         }
         jollof = self.score(full, "jollof-rice")
         self.assertEqual(jollof["match_percent"], 100)
         self.assertTrue(jollof["has_balanced_meal"])
 
     def test_core_only_jollof_is_ready_with_high_percent(self) -> None:
-        core_only = {"rice", "tomatoes", "onions", "peppers"}
+        core_only = {"rice", "tomatoes", "onions", "peppers", "vegetable oil"}
         jollof = self.score(core_only, "jollof-rice")
         self.assertTrue(jollof["has_core"])
         self.assertEqual(classify_tier(jollof), "ready_now")
@@ -174,7 +187,10 @@ class MatcherTests(unittest.TestCase):
         self.assertTrue(fried["has_core"])
 
     def test_bucket_sorting_prefers_balanced_meals(self) -> None:
-        selected = {"rice", "tomatoes", "onions", "peppers", "chicken", "vegetable oil", "thyme", "bay leaves"}
+        selected = {
+            "rice", "tomatoes", "onions", "peppers", "chicken",
+            "vegetable oil", "thyme", "bay leaves", "seasoning cubes",
+        }
         buckets = self.bucket(selected)
         self.assertEqual(buckets["ready_now"][0]["id"], "jollof-rice")
 

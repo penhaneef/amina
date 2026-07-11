@@ -4,31 +4,38 @@
     "tomatoes", "onions", "peppers", "plantain", "palm oil",
     "garri", "egusi", "vegetable oil"
   ],
-  "carbs": ["rice", "beans", "plantain", "yam", "garri", "egusi", "okra", "pounded yam", "pap", "bread"],
-  "proteins": ["chicken", "beef", "fish", "stockfish", "crayfish", "beans", "eggs"],
+  "carbs": [
+    "rice", "beans", "plantain", "yam", "garri", "egusi", "okra",
+    "pounded yam", "pap", "bread", "fufu", "sweet potato"
+  ],
+  "proteins": ["chicken", "beef", "fish", "stockfish", "crayfish", "beans", "eggs", "liver", "turkey"],
   "meat": ["chicken", "beef"],
   "global_substitutes": {
-    "spinach": ["pumpkin leaves", "ugwu"],
-    "pumpkin leaves": ["spinach", "ugwu"],
-    "peppers": ["scotch bonnet", "tatashe"],
-    "tomatoes": ["tomato paste"],
-    "onions": ["shallots"],
-    "beef": ["goat meat"],
-    "chicken": ["turkey"],
+    "spinach": ["pumpkin leaves"],
+    "pumpkin leaves": ["spinach"],
     "palm oil": ["vegetable oil"],
     "vegetable oil": ["palm oil"],
-    "garri": ["fufu"],
+    "garri": ["fufu", "pounded yam"],
     "fufu": ["garri", "pounded yam"],
-    "pap": ["bread", "agege bread"]
+    "pounded yam": ["garri", "fufu"],
+    "pap": ["bread"],
+    "yam": ["sweet potato"],
+    "sweet potato": ["yam"],
+    "chicken": ["turkey", "beef"],
+    "beef": ["chicken"],
+    "tomatoes": ["tomato paste"]
   },
   "categories": {
-    "Carbs & staples": ["rice", "beans", "plantain", "yam", "garri", "egusi", "okra", "pounded yam", "pap", "bread"],
-    "Proteins": ["chicken", "beef", "fish", "stockfish", "crayfish", "eggs"],
+    "Carbs & staples": [
+      "rice", "beans", "plantain", "yam", "sweet potato", "garri", "fufu",
+      "egusi", "okra", "pounded yam", "pap", "bread"
+    ],
+    "Proteins": ["chicken", "beef", "fish", "stockfish", "crayfish", "eggs", "liver", "turkey"],
     "Vegetables & greens": [
       "tomatoes", "onions", "peppers", "spinach", "cabbage",
       "scent leaves", "utazi", "carrots", "green beans", "pumpkin leaves"
     ],
-    "Oils & bases": ["palm oil", "vegetable oil", "groundnut oil"],
+    "Oils & bases": ["palm oil", "vegetable oil", "groundnut oil", "tomato paste"],
     "Seasonings & spices": [
       "ginger", "garlic", "thyme", "bay leaves", "suya spice",
       "curry powder", "seasoning cubes"
@@ -38,10 +45,15 @@
     "peppers": "Peppers (ata rodo / scotch bonnet)",
     "pounded yam": "Pounded yam (iyan)",
     "garri": "Garri / eba",
+    "fufu": "Fufu",
     "scent leaves": "Scent leaves (nchuanwu)",
     "utazi": "Utazi leaves",
     "egusi": "Egusi (melon seeds)",
     "pap": "Pap (ogi / akamu)",
-    "bread": "Bread (agege / soft bread)"
+    "bread": "Bread (agege / soft bread)",
+    "sweet potato": "Sweet potato",
+    "tomato paste": "Tomato paste",
+    "liver": "Liver",
+    "turkey": "Turkey"
   }
 }

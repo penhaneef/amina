@@ -26,6 +26,51 @@ class DataTests(unittest.TestCase):
                     f"{recipe['name']} missing measurement for {ingredient}",
                 )
 
+    def test_all_substitutes_are_selectable(self) -> None:
+        """Every substitute target must appear in the kitchen ingredient list."""
+        config = load_ingredient_config()
+        known: set[str] = set()
+        for items in config["categories"].values():
+            known.update(items)
+        known.update(config["quick_picks"])
+        known.update(config["carbs"])
+        known.update(config["proteins"])
+
+        for ingredient, alts in config["global_substitutes"].items():
+            for alt in alts:
+                self.assertIn(
+                    alt,
+                    known,
+                    f"global substitute '{alt}' for '{ingredient}' is not selectable",
+                )
+
+        for recipe in load_recipes():
+            for ingredient, alts in recipe.get("substitutes", {}).items():
+                for alt in alts:
+                    self.assertIn(
+                        alt,
+                        known,
+                        f"{recipe['name']}: substitute '{alt}' for '{ingredient}' not selectable",
+                    )
+
+    def test_compound_name_parts_are_in_core(self) -> None:
+        """Dishes named X + Y / X & Y must model both sides in core ingredients."""
+        checks = {
+            "egusi-soup": {"egusi", "pounded yam"},
+            "ewa-dodo": {"beans", "plantain"},
+            "suya-chicken": {"chicken", "suya spice", "cabbage", "tomatoes"},
+            "tuwo-shinkafa": {"rice", "pumpkin leaves"},
+            "akara-pap": {"beans", "pap"},
+            "okra-soup": {"okra", "garri"},
+        }
+        recipes = {item["id"]: item for item in load_recipes()}
+        for recipe_id, required in checks.items():
+            core = set(recipes[recipe_id]["core_ingredients"])
+            self.assertTrue(
+                required <= core,
+                f"{recipe_id} core missing {required - core}",
+            )
+
     def test_recipe_images_exist(self) -> None:
         for recipe in load_recipes():
             path = IMAGES_DIR / recipe["image"]

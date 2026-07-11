@@ -171,7 +171,7 @@ def render_kitchen() -> dict:
         if st.button("Jollof demo", key="demo", **_btn_width_kwargs()):
             set_selected(
                 ALL_INGREDIENTS,
-                {"rice", "tomatoes", "onions", "peppers", "chicken"},
+                {"rice", "tomatoes", "onions", "peppers", "vegetable oil", "chicken"},
             )
             st.rerun()
 
