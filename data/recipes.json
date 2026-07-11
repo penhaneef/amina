@@ -2,8 +2,19 @@
   {
     "id": "jollof-rice",
     "name": "Classic Jollof Rice",
-    "core_ingredients": ["rice", "tomatoes", "onions", "peppers", "vegetable oil"],
-    "other_ingredients": ["chicken", "thyme", "bay leaves", "seasoning cubes"],
+    "core_ingredients": [
+      "rice",
+      "tomatoes",
+      "onions",
+      "peppers",
+      "vegetable oil"
+    ],
+    "other_ingredients": [
+      "chicken",
+      "thyme",
+      "bay leaves",
+      "seasoning cubes"
+    ],
     "measurements": {
       "rice": "3 cups (uncooked)",
       "tomatoes": "4–5 medium (or tomato paste + 2 fresh)",
@@ -15,7 +26,15 @@
       "bay leaves": "2 leaves",
       "seasoning cubes": "2 cubes"
     },
-    "substitutes": {"chicken": ["beef", "fish"], "tomatoes": ["tomato paste"]},
+    "substitutes": {
+      "chicken": [
+        "beef",
+        "fish"
+      ],
+      "tomatoes": [
+        "tomato paste"
+      ]
+    },
     "time": 50,
     "servings": 4,
     "spice": "Medium",
@@ -37,8 +56,20 @@
   {
     "id": "egusi-soup",
     "name": "Egusi Soup + Pounded Yam",
-    "core_ingredients": ["egusi", "palm oil", "onions", "peppers", "spinach", "pounded yam"],
-    "other_ingredients": ["beef", "stockfish", "crayfish", "seasoning cubes"],
+    "core_ingredients": [
+      "egusi",
+      "palm oil",
+      "onions",
+      "peppers",
+      "spinach",
+      "pounded yam"
+    ],
+    "other_ingredients": [
+      "beef",
+      "stockfish",
+      "crayfish",
+      "seasoning cubes"
+    ],
     "measurements": {
       "egusi": "2 cups ground melon seeds",
       "palm oil": "1/2–3/4 cup",
@@ -52,8 +83,13 @@
       "seasoning cubes": "2 cubes"
     },
     "substitutes": {
-      "spinach": ["pumpkin leaves"],
-      "pounded yam": ["garri", "fufu"]
+      "spinach": [
+        "pumpkin leaves"
+      ],
+      "pounded yam": [
+        "garri",
+        "fufu"
+      ]
     },
     "time": 65,
     "servings": 5,
@@ -77,8 +113,19 @@
   {
     "id": "fish-pepper-soup",
     "name": "Fish Pepper Soup",
-    "core_ingredients": ["fish", "peppers", "onions", "ginger", "garlic"],
-    "other_ingredients": ["utazi", "scent leaves", "crayfish", "seasoning cubes"],
+    "core_ingredients": [
+      "fish",
+      "peppers",
+      "onions",
+      "ginger",
+      "garlic"
+    ],
+    "other_ingredients": [
+      "utazi",
+      "scent leaves",
+      "crayfish",
+      "seasoning cubes"
+    ],
     "measurements": {
       "fish": "1–1.2 kg whole or steaks (catfish, tilapia, or any firm fish)",
       "peppers": "4–6 scotch bonnet (adjust heat)",
@@ -111,8 +158,17 @@
   {
     "id": "ewa-dodo",
     "name": "Beans & Plantain (Ewa Dodo)",
-    "core_ingredients": ["beans", "plantain", "palm oil", "onions", "peppers"],
-    "other_ingredients": ["crayfish", "seasoning cubes"],
+    "core_ingredients": [
+      "beans",
+      "plantain",
+      "palm oil",
+      "onions",
+      "peppers"
+    ],
+    "other_ingredients": [
+      "crayfish",
+      "seasoning cubes"
+    ],
     "measurements": {
       "beans": "2 cups honey beans / black-eyed peas",
       "plantain": "3–4 ripe plantains",
@@ -144,8 +200,20 @@
   {
     "id": "okra-soup",
     "name": "Okra Soup with Fufu or Garri",
-    "core_ingredients": ["okra", "palm oil", "onions", "peppers", "spinach", "garri"],
-    "other_ingredients": ["beef", "stockfish", "crayfish", "seasoning cubes"],
+    "core_ingredients": [
+      "okra",
+      "palm oil",
+      "onions",
+      "peppers",
+      "spinach",
+      "garri"
+    ],
+    "other_ingredients": [
+      "beef",
+      "stockfish",
+      "crayfish",
+      "seasoning cubes"
+    ],
     "measurements": {
       "okra": "500 g fresh (or 3 cups chopped)",
       "palm oil": "1/3–1/2 cup",
@@ -159,8 +227,13 @@
       "seasoning cubes": "2 cubes"
     },
     "substitutes": {
-      "garri": ["fufu", "pounded yam"],
-      "spinach": ["pumpkin leaves"]
+      "garri": [
+        "fufu",
+        "pounded yam"
+      ],
+      "spinach": [
+        "pumpkin leaves"
+      ]
     },
     "time": 45,
     "servings": 4,
@@ -183,8 +256,17 @@
   {
     "id": "suya-chicken",
     "name": "Suya-Spiced Grilled Chicken + Salad",
-    "core_ingredients": ["chicken", "suya spice", "onions", "peppers", "tomatoes", "cabbage"],
-    "other_ingredients": ["vegetable oil"],
+    "core_ingredients": [
+      "chicken",
+      "suya spice",
+      "onions",
+      "peppers",
+      "tomatoes",
+      "cabbage"
+    ],
+    "other_ingredients": [
+      "vegetable oil"
+    ],
     "measurements": {
       "chicken": "600–800 g boneless or thighs",
       "suya spice": "3–4 tbsp",
@@ -194,7 +276,11 @@
       "cabbage": "1/4 small head, shredded",
       "vegetable oil": "2–3 tbsp for coating / grill"
     },
-    "substitutes": {"chicken": ["beef"]},
+    "substitutes": {
+      "chicken": [
+        "beef"
+      ]
+    },
     "time": 30,
     "servings": 3,
     "spice": "Hot",
@@ -215,8 +301,19 @@
   {
     "id": "party-fried-rice",
     "name": "Party Fried Rice",
-    "core_ingredients": ["rice", "vegetable oil", "onions", "peppers", "curry powder"],
-    "other_ingredients": ["chicken", "carrots", "green beans", "seasoning cubes"],
+    "core_ingredients": [
+      "rice",
+      "vegetable oil",
+      "onions",
+      "peppers",
+      "curry powder"
+    ],
+    "other_ingredients": [
+      "chicken",
+      "carrots",
+      "green beans",
+      "seasoning cubes"
+    ],
     "measurements": {
       "rice": "3 cups (uncooked)",
       "vegetable oil": "1/2 cup",
@@ -228,7 +325,12 @@
       "green beans": "1 cup chopped",
       "seasoning cubes": "2 cubes"
     },
-    "substitutes": {"chicken": ["beef", "liver"]},
+    "substitutes": {
+      "chicken": [
+        "beef",
+        "liver"
+      ]
+    },
     "time": 40,
     "servings": 4,
     "spice": "Mild",
@@ -250,8 +352,19 @@
   {
     "id": "yam-porridge",
     "name": "Yam Porridge (Asaro)",
-    "core_ingredients": ["yam", "palm oil", "onions", "peppers", "tomatoes"],
-    "other_ingredients": ["crayfish", "spinach", "stockfish", "seasoning cubes"],
+    "core_ingredients": [
+      "yam",
+      "palm oil",
+      "onions",
+      "peppers",
+      "tomatoes"
+    ],
+    "other_ingredients": [
+      "crayfish",
+      "spinach",
+      "stockfish",
+      "seasoning cubes"
+    ],
     "measurements": {
       "yam": "1 medium tuber (about 1–1.2 kg)",
       "palm oil": "1/3 cup",
@@ -263,7 +376,11 @@
       "stockfish": "1 small piece (optional)",
       "seasoning cubes": "1–2 cubes"
     },
-    "substitutes": {"yam": ["sweet potato"]},
+    "substitutes": {
+      "yam": [
+        "sweet potato"
+      ]
+    },
     "time": 35,
     "servings": 4,
     "spice": "Medium",
@@ -285,8 +402,17 @@
   {
     "id": "moi-moi",
     "name": "Moi Moi",
-    "core_ingredients": ["beans", "onions", "peppers", "vegetable oil"],
-    "other_ingredients": ["eggs", "crayfish", "seasoning cubes"],
+    "core_ingredients": [
+      "beans",
+      "onions",
+      "peppers",
+      "vegetable oil"
+    ],
+    "other_ingredients": [
+      "eggs",
+      "crayfish",
+      "seasoning cubes"
+    ],
     "measurements": {
       "beans": "3 cups peeled honey beans (or 2 cups bean flour)",
       "onions": "1 medium",
@@ -318,8 +444,17 @@
   {
     "id": "tuwo-shinkafa",
     "name": "Tuwo Shinkafa + Miyan Taushe",
-    "core_ingredients": ["rice", "pumpkin leaves", "groundnut oil", "onions", "peppers"],
-    "other_ingredients": ["beef", "seasoning cubes"],
+    "core_ingredients": [
+      "rice",
+      "pumpkin leaves",
+      "groundnut oil",
+      "onions",
+      "peppers"
+    ],
+    "other_ingredients": [
+      "beef",
+      "seasoning cubes"
+    ],
     "measurements": {
       "rice": "3 cups soft rice (for tuwo)",
       "pumpkin leaves": "2 large bunches (or spinach)",
@@ -329,7 +464,11 @@
       "beef": "500 g–1 kg",
       "seasoning cubes": "2 cubes"
     },
-    "substitutes": {"pumpkin leaves": ["spinach"]},
+    "substitutes": {
+      "pumpkin leaves": [
+        "spinach"
+      ]
+    },
     "time": 70,
     "servings": 6,
     "spice": "Mild",
@@ -351,8 +490,16 @@
   {
     "id": "akara-pap",
     "name": "Akara & Pap (Quick Breakfast)",
-    "core_ingredients": ["beans", "onions", "peppers", "vegetable oil", "pap"],
-    "other_ingredients": ["seasoning cubes"],
+    "core_ingredients": [
+      "beans",
+      "onions",
+      "peppers",
+      "vegetable oil",
+      "pap"
+    ],
+    "other_ingredients": [
+      "seasoning cubes"
+    ],
     "measurements": {
       "beans": "2 cups peeled beans",
       "onions": "1 small",
@@ -361,7 +508,11 @@
       "pap": "1–1½ cups dry ogi/akamu (or ready pap for 3 people)",
       "seasoning cubes": "1 cube (optional)"
     },
-    "substitutes": {"pap": ["bread"]},
+    "substitutes": {
+      "pap": [
+        "bread"
+      ]
+    },
     "time": 25,
     "servings": 3,
     "spice": "Mild",
@@ -378,6 +529,286 @@
       "Whisk in salt and seasoning. The mix should hold its shape.",
       "Drop spoonfuls into hot oil. Fry until deep golden on both sides.",
       "Drain akara on paper. Serve hot with the pap (or soft bread if that is your substitute)."
+    ]
+  },
+  {
+    "id": "yam-egg",
+    "name": "Yam & Egg Sauce",
+    "core_ingredients": [
+      "yam",
+      "eggs",
+      "tomatoes",
+      "onions",
+      "peppers",
+      "vegetable oil"
+    ],
+    "other_ingredients": [
+      "seasoning cubes",
+      "thyme"
+    ],
+    "measurements": {
+      "yam": "1 medium tuber (about 1 kg)",
+      "eggs": "4–6 eggs",
+      "tomatoes": "3 medium",
+      "onions": "1 large",
+      "peppers": "2–3",
+      "vegetable oil": "1/3 cup",
+      "seasoning cubes": "1 cube",
+      "thyme": "1/2 tsp"
+    },
+    "substitutes": {
+      "yam": [
+        "sweet potato"
+      ],
+      "vegetable oil": [
+        "palm oil"
+      ]
+    },
+    "time": 30,
+    "servings": 3,
+    "spice": "Medium",
+    "vibe": "Weeknight classic. Soft yam with rich tomato-egg sauce — filling without fuss.",
+    "emoji": "🥚",
+    "image": "yam-egg.jpg",
+    "region": "General",
+    "kid_friendly": true,
+    "budget": true,
+    "ramadan": true,
+    "steps": [
+      "Peel and slice yam. Boil in salted water until just tender. Drain and keep warm.",
+      "Blend or chop tomatoes, peppers, and onions.",
+      "Heat oil, fry the blend until thick and the raw taste is gone. Season with cubes and thyme.",
+      "Crack eggs into the sauce and scramble gently, or fry eggs separately and fold in.",
+      "Serve hot sauce over the boiled yam."
+    ]
+  },
+  {
+    "id": "spaghetti",
+    "name": "Nigerian Spaghetti",
+    "core_ingredients": [
+      "spaghetti",
+      "tomatoes",
+      "onions",
+      "peppers",
+      "vegetable oil"
+    ],
+    "other_ingredients": [
+      "chicken",
+      "curry powder",
+      "thyme",
+      "seasoning cubes",
+      "carrots",
+      "green beans"
+    ],
+    "measurements": {
+      "spaghetti": "500 g pack",
+      "tomatoes": "4 medium or 1 tin paste + 2 fresh",
+      "onions": "1 large",
+      "peppers": "2–3",
+      "vegetable oil": "1/3–1/2 cup",
+      "chicken": "300–500 g pieces (optional)",
+      "curry powder": "1 tsp",
+      "thyme": "1/2 tsp",
+      "seasoning cubes": "2 cubes",
+      "carrots": "1 medium, diced",
+      "green beans": "1/2 cup chopped"
+    },
+    "substitutes": {
+      "chicken": [
+        "beef",
+        "liver"
+      ],
+      "tomatoes": [
+        "tomato paste"
+      ]
+    },
+    "time": 35,
+    "servings": 4,
+    "spice": "Medium",
+    "vibe": "Crowded-house favourite. Colourful, saucy pasta that disappears from the pot.",
+    "emoji": "🍝",
+    "image": "spaghetti.jpg",
+    "region": "General",
+    "kid_friendly": true,
+    "budget": true,
+    "ramadan": true,
+    "steps": [
+      "Boil spaghetti in salted water until al dente. Drain and toss with a little oil.",
+      "If using chicken, season and fry or boil until cooked. Set aside.",
+      "Fry onions in oil, add blended tomatoes and peppers. Cook until thick and oil floats.",
+      "Add curry, thyme, seasoning, and optional carrots/green beans. Simmer 5 minutes.",
+      "Fold in spaghetti (and chicken). Toss well and serve hot."
+    ]
+  },
+  {
+    "id": "coconut-rice",
+    "name": "Coconut Rice",
+    "core_ingredients": [
+      "rice",
+      "coconut milk",
+      "onions",
+      "peppers",
+      "vegetable oil"
+    ],
+    "other_ingredients": [
+      "tomatoes",
+      "curry powder",
+      "thyme",
+      "seasoning cubes",
+      "chicken"
+    ],
+    "measurements": {
+      "rice": "3 cups (uncooked)",
+      "coconut milk": "2 cups (or 1 tin + water to make 2 cups)",
+      "onions": "1 large",
+      "peppers": "2",
+      "vegetable oil": "1/4 cup",
+      "tomatoes": "2 medium (optional colour)",
+      "curry powder": "1 tsp",
+      "thyme": "1/2 tsp",
+      "seasoning cubes": "2 cubes",
+      "chicken": "400 g (optional)"
+    },
+    "substitutes": {
+      "chicken": [
+        "beef",
+        "fish"
+      ],
+      "vegetable oil": [
+        "palm oil"
+      ]
+    },
+    "time": 45,
+    "servings": 4,
+    "spice": "Mild",
+    "vibe": "Creamy, fragrant rice with a gentle sweetness. Feels special on a Sunday.",
+    "emoji": "🥥",
+    "image": "coconut-rice.jpg",
+    "region": "General / South-South",
+    "kid_friendly": true,
+    "budget": false,
+    "ramadan": true,
+    "steps": [
+      "Rinse rice. Optionally parboil and drain.",
+      "Fry onions (and a little pepper/tomato if using) in oil until soft.",
+      "Pour in coconut milk, seasoning, curry, and thyme. Bring to a gentle simmer.",
+      "Add rice, stir once, cover and cook on low until liquid is absorbed and rice is tender.",
+      "Fluff with a fork. Serve with chicken or stew if you like."
+    ]
+  },
+  {
+    "id": "miyan-kuka",
+    "name": "Miyan Kuka + Tuwo",
+    "core_ingredients": [
+      "kuka",
+      "rice",
+      "onions",
+      "peppers",
+      "palm oil"
+    ],
+    "other_ingredients": [
+      "beef",
+      "seasoning cubes",
+      "crayfish",
+      "ginger"
+    ],
+    "measurements": {
+      "kuka": "1–2 cups baobab leaf powder (kuka)",
+      "rice": "3 cups soft rice (for tuwo)",
+      "onions": "1 large",
+      "peppers": "2–3",
+      "palm oil": "1/3 cup",
+      "beef": "500 g",
+      "seasoning cubes": "2 cubes",
+      "crayfish": "2 tbsp ground",
+      "ginger": "1 small piece"
+    },
+    "substitutes": {
+      "rice": [
+        "garri",
+        "fufu"
+      ],
+      "palm oil": [
+        "groundnut oil"
+      ],
+      "beef": [
+        "chicken"
+      ]
+    },
+    "time": 55,
+    "servings": 5,
+    "spice": "Medium",
+    "vibe": "Northern comfort in a bowl. Earthy kuka soup with soft tuwo — proper home food.",
+    "emoji": "🌿",
+    "image": "miyan-kuka.jpg",
+    "region": "Hausa / Northern",
+    "kid_friendly": true,
+    "budget": true,
+    "ramadan": true,
+    "steps": [
+      "Boil beef with seasoning and ginger until tender. Reserve stock.",
+      "Make tuwo: cook soft rice with extra water, mash until smooth and firm. Keep warm.",
+      "In a pot, heat palm oil lightly. Add blended peppers and onions; cook briefly.",
+      "Pour in stock. Sprinkle kuka powder while stirring so it does not cake. Simmer until thick and drawy.",
+      "Add crayfish and meat. Adjust salt. Serve miyan kuka with tuwo (or garri/fufu)."
+    ]
+  },
+  {
+    "id": "white-rice-stew",
+    "name": "White Rice & Tomato Stew",
+    "core_ingredients": [
+      "rice",
+      "tomatoes",
+      "onions",
+      "peppers",
+      "vegetable oil"
+    ],
+    "other_ingredients": [
+      "chicken",
+      "thyme",
+      "curry powder",
+      "seasoning cubes",
+      "ginger",
+      "garlic"
+    ],
+    "measurements": {
+      "rice": "3 cups (uncooked)",
+      "tomatoes": "5–6 medium or 1 tin paste + fresh tomatoes",
+      "onions": "2 medium",
+      "peppers": "3–4",
+      "vegetable oil": "1/2 cup",
+      "chicken": "500 g–1 kg",
+      "thyme": "1 tsp",
+      "curry powder": "1 tsp",
+      "seasoning cubes": "2 cubes",
+      "ginger": "1 small piece",
+      "garlic": "2–3 cloves"
+    },
+    "substitutes": {
+      "chicken": [
+        "beef",
+        "fish"
+      ],
+      "tomatoes": [
+        "tomato paste"
+      ]
+    },
+    "time": 50,
+    "servings": 4,
+    "spice": "Medium",
+    "vibe": "Everyday Nigerian plate. Plain rice with deep red stew — always welcome at the table.",
+    "emoji": "🍛",
+    "image": "white-rice-stew.jpg",
+    "region": "General",
+    "kid_friendly": true,
+    "budget": true,
+    "ramadan": true,
+    "steps": [
+      "Boil rice in salted water until soft and fluffy. Drain if needed and keep warm.",
+      "Season chicken with salt, curry, and thyme. Boil or fry until cooked. Reserve stock if boiled.",
+      "Blend tomatoes, peppers, onions, ginger, and garlic.",
+      "Heat oil, fry the blend until thick, dark red, and oil rises. Season with cubes.",
+      "Add chicken and a splash of stock. Simmer 10 minutes. Serve stew over white rice."
     ]
   }
 ]

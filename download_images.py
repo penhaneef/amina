@@ -21,6 +21,12 @@ RECIPE_IMAGES = {
     "moi-moi.jpg": "Steaming_wrapped_moi_moi.jpg",
     "tuwo-shinkafa.jpg": "Tuwo_shinkafa_made_with_rice.jpg",
     "akara-pap.jpg": "Akara_na_Akamu_(Fried_Bean_cakes_and_Pap).jpg",
+    # New everyday dishes (Commons filenames; fallback generator if missing)
+    "yam-egg.jpg": "Asaro_and_egg_sauce.jpg",
+    "spaghetti.jpg": "Spaghetti_with_meatballs_and_tomato_sauce.jpg",
+    "coconut-rice.jpg": "Coconut_rice.jpg",
+    "miyan-kuka.jpg": "Miyan_kuka.jpg",
+    "white-rice-stew.jpg": "White_rice_and_stew.jpg",
 }
 
 USER_AGENT = "AminaRecipeApp/1.0 (local MVP; educational use)"

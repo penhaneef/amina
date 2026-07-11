@@ -1,12 +1,12 @@
 {
   "quick_picks": [
-    "rice", "beans", "chicken", "beef", "fish",
+    "rice", "beans", "chicken", "beef", "fish", "eggs",
     "tomatoes", "onions", "peppers", "plantain", "palm oil",
-    "garri", "egusi", "vegetable oil"
+    "garri", "egusi", "vegetable oil", "spaghetti"
   ],
   "carbs": [
     "rice", "beans", "plantain", "yam", "garri", "egusi", "okra",
-    "pounded yam", "pap", "bread", "fufu", "sweet potato"
+    "pounded yam", "pap", "bread", "fufu", "sweet potato", "spaghetti"
   ],
   "proteins": ["chicken", "beef", "fish", "stockfish", "crayfish", "beans", "eggs", "liver", "turkey"],
   "meat": ["chicken", "beef"],
@@ -28,14 +28,14 @@
   "categories": {
     "Carbs & staples": [
       "rice", "beans", "plantain", "yam", "sweet potato", "garri", "fufu",
-      "egusi", "okra", "pounded yam", "pap", "bread"
+      "egusi", "okra", "pounded yam", "pap", "bread", "spaghetti"
     ],
     "Proteins": ["chicken", "beef", "fish", "stockfish", "crayfish", "eggs", "liver", "turkey"],
     "Vegetables & greens": [
       "tomatoes", "onions", "peppers", "spinach", "cabbage",
-      "scent leaves", "utazi", "carrots", "green beans", "pumpkin leaves"
+      "scent leaves", "utazi", "carrots", "green beans", "pumpkin leaves", "kuka"
     ],
-    "Oils & bases": ["palm oil", "vegetable oil", "groundnut oil", "tomato paste"],
+    "Oils & bases": ["palm oil", "vegetable oil", "groundnut oil", "tomato paste", "coconut milk"],
     "Seasonings & spices": [
       "ginger", "garlic", "thyme", "bay leaves", "suya spice",
       "curry powder", "seasoning cubes"
@@ -54,6 +54,9 @@
     "sweet potato": "Sweet potato",
     "tomato paste": "Tomato paste",
     "liver": "Liver",
-    "turkey": "Turkey"
+    "turkey": "Turkey",
+    "spaghetti": "Spaghetti / pasta",
+    "coconut milk": "Coconut milk",
+    "kuka": "Kuka (baobab leaf powder)"
   }
 }

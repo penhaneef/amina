@@ -62,6 +62,9 @@ class DataTests(unittest.TestCase):
             "tuwo-shinkafa": {"rice", "pumpkin leaves"},
             "akara-pap": {"beans", "pap"},
             "okra-soup": {"okra", "garri"},
+            "yam-egg": {"yam", "eggs"},
+            "white-rice-stew": {"rice", "tomatoes"},
+            "miyan-kuka": {"kuka", "rice"},
         }
         recipes = {item["id"]: item for item in load_recipes()}
         for recipe_id, required in checks.items():
