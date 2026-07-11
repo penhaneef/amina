@@ -46,41 +46,116 @@ def inject_styles() -> None:
         <style>
         @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
         html, body, [class*="css"] { font-family: 'Nunito', sans-serif; }
-        .block-container { padding-top: 0.5rem; padding-bottom: 2rem; max-width: 1180px; }
+
+        /* Space under Streamlit's top toolbar so the hero is never clipped */
+        .block-container {
+            padding-top: 2.75rem !important;
+            padding-bottom: 2rem;
+            max-width: 1180px;
+        }
+        header[data-testid="stHeader"] {
+            background: transparent;
+        }
+        /* Keep deploy/menu controls from sitting on top of brand text */
+        div[data-testid="stToolbar"] {
+            right: 0.5rem;
+            top: 0.35rem;
+        }
+
         [data-testid="stSidebar"] { display: none; }
         section[data-testid="stMain"] { padding-left: 0.75rem; padding-right: 0.75rem; }
 
         .hero-banner {
-            background: linear-gradient(120deg, #C45C26 0%, #E07A3A 35%, #2D6A4F 100%);
-            border-radius: 18px; padding: 1.15rem 1.35rem; margin-bottom: 1rem;
-            color: #FFFDF8; box-shadow: 0 8px 24px rgba(196, 92, 38, 0.25);
+            background: linear-gradient(125deg, #C45C26 0%, #E07A3A 40%, #2D6A4F 100%);
+            border-radius: 20px;
+            padding: 1.1rem 1.25rem 1rem 1.25rem;
+            margin: 0 0 1.15rem 0;
+            color: #FFFDF8;
+            box-shadow: 0 10px 28px rgba(196, 92, 38, 0.22);
+            overflow: hidden;
+            position: relative;
+        }
+        .hero-banner::after {
+            content: "";
+            position: absolute;
+            right: -40px; top: -40px;
+            width: 140px; height: 140px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+            pointer-events: none;
         }
         .hero-row {
-            display: flex; align-items: center; gap: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+            z-index: 1;
         }
         .hero-logo {
-            width: 72px; height: 72px; border-radius: 16px; object-fit: cover;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.18);
-            border: 2px solid rgba(255,255,255,0.45); flex-shrink: 0;
+            width: 64px; height: 64px;
+            border-radius: 18px;
+            object-fit: cover;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+            border: 2.5px solid rgba(255,255,255,0.55);
+            flex-shrink: 0;
             background: #FFFDF8;
         }
+        .hero-text { min-width: 0; flex: 1; }
+        .hero-kicker {
+            margin: 0 0 0.15rem 0;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(255,248,240,0.85);
+        }
         .hero-title {
-            font-size: clamp(1.55rem, 4vw, 2.25rem);
-            font-weight: 800; margin: 0; line-height: 1.15; color: #FFFDF8;
+            font-size: clamp(1.65rem, 4.2vw, 2.15rem);
+            font-weight: 800;
+            margin: 0;
+            line-height: 1.1;
+            color: #FFFDF8;
+            letter-spacing: -0.02em;
         }
         .hero-tagline {
-            margin: 0.15rem 0 0 0; font-size: 1.05rem; font-weight: 700;
-            color: #FFF8F0; opacity: 0.98;
+            margin: 0.28rem 0 0 0;
+            font-size: clamp(0.95rem, 2.2vw, 1.08rem);
+            font-weight: 700;
+            color: #FFF8F0;
+            line-height: 1.3;
         }
         .hero-sub {
-            margin: 0.3rem 0 0 0; font-size: 0.95rem; color: #FFF3E6; opacity: 0.95;
+            margin: 0.35rem 0 0 0;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: rgba(255,243,230,0.92);
+            line-height: 1.35;
+            max-width: 36rem;
+        }
+        .hero-divider {
+            height: 1px;
+            margin: 0.85rem 0 0.7rem 0;
+            background: linear-gradient(90deg, rgba(255,255,255,0.35), rgba(255,255,255,0.05));
+            border: 0;
+            position: relative;
+            z-index: 1;
         }
         .hero-pills {
-            display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            position: relative;
+            z-index: 1;
         }
         .hero-pill {
-            background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.35);
-            border-radius: 999px; padding: 0.15rem 0.65rem; font-size: 0.78rem;
+            background: rgba(255,255,255,0.16);
+            border: 1px solid rgba(255,255,255,0.32);
+            border-radius: 999px;
+            padding: 0.2rem 0.7rem;
+            font-size: 0.76rem;
+            font-weight: 600;
+            color: #FFFDF8;
+            backdrop-filter: blur(4px);
         }
 
         .kitchen-panel {
@@ -168,10 +243,23 @@ def inject_styles() -> None:
 
         /* Phone / tablet: stack kitchen then suggestions */
         @media (max-width: 899px) {
-            .block-container { padding-top: 0.25rem; max-width: 100%; }
-            .hero-banner { border-radius: 14px; padding: 1rem 0.9rem; }
-            .hero-logo { width: 58px; height: 58px; border-radius: 14px; }
-            .hero-row { gap: 0.75rem; }
+            /* Extra top pad on phone so Streamlit chrome never covers "Amina" */
+            .block-container {
+                padding-top: 3.25rem !important;
+                max-width: 100%;
+            }
+            .hero-banner {
+                border-radius: 16px;
+                padding: 0.95rem 0.95rem 0.85rem 0.95rem;
+                margin-bottom: 0.9rem;
+            }
+            .hero-row { gap: 0.75rem; align-items: flex-start; }
+            .hero-logo { width: 56px; height: 56px; border-radius: 14px; margin-top: 0.1rem; }
+            .hero-title { font-size: 1.55rem; }
+            .hero-tagline { font-size: 0.95rem; }
+            .hero-sub { font-size: 0.82rem; }
+            .hero-kicker { font-size: 0.65rem; }
+            .hero-divider { margin: 0.7rem 0 0.55rem 0; }
             div[data-testid="stHorizontalBlock"] {
                 flex-direction: column !important;
                 gap: 0.5rem !important;
@@ -205,30 +293,32 @@ def _logo_data_uri() -> str | None:
 
 
 def render_hero() -> None:
+    """Brand header: logo + wordmark, clear hierarchy, safe under Streamlit chrome."""
     logo_uri = _logo_data_uri()
     logo_html = (
-        f'<img class="hero-logo" src="{logo_uri}" alt="{APP_NAME} logo" />'
+        f'<img class="hero-logo" src="{logo_uri}" alt="{APP_NAME} logo" width="64" height="64" />'
         if logo_uri
         else ""
     )
     st.markdown(
         f"""
-        <div class="hero-banner">
+        <header class="hero-banner" role="banner">
             <div class="hero-row">
                 {logo_html}
-                <div>
-                    <p class="hero-title">{APP_NAME}</p>
+                <div class="hero-text">
+                    <p class="hero-kicker">Kitchen companion</p>
+                    <h1 class="hero-title">{APP_NAME}</h1>
                     <p class="hero-tagline">{TAGLINE}</p>
                     <p class="hero-sub">{SUBTITLE}</p>
                 </div>
             </div>
-            <div class="hero-pills">
+            <hr class="hero-divider" />
+            <div class="hero-pills" aria-label="Highlights">
                 <span class="hero-pill">🇳🇬 Nigerian dishes</span>
                 <span class="hero-pill">⚡ Quick picks</span>
-                <span class="hero-pill">👩🏽‍🍳 Step-by-step</span>
-                <span class="hero-pill">🏠 Northern kitchen companion</span>
+                <span class="hero-pill">👩🏽‍🍳 Amounts &amp; steps</span>
             </div>
-        </div>
+        </header>
         """,
         unsafe_allow_html=True,
     )
