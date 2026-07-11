@@ -13,3 +13,8 @@ data/saved_pantry.json
 .idea/
 .vscode/
 *.log
+# local auth helpers
+gh-auth*.txt
+gh-auth*.log
+gh-auth*.flag
+gh-login.ps1
