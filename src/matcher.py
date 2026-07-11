@@ -172,15 +172,33 @@ def bucket_recipes(recipes: List[Dict]) -> Dict[Tier, List[Dict]]:
     for recipe in recipes:
         buckets[classify_tier(recipe)].append(recipe)
 
-    # Highest match % first within a tier (what users read on cards), then score/balance.
-    sort_key = lambda item: (
-        item["match_percent"],
-        item["score"],
-        item["has_balanced_meal"],
-    )
+    # Stable within-bucket order (also used when flattening for display).
     for tier in ("ready_now", "almost_there", "shop_run"):
-        buckets[tier].sort(key=sort_key, reverse=True)
+        buckets[tier].sort(key=match_rank_key, reverse=True)
     return buckets
+
+
+def match_rank_key(recipe: Dict) -> Tuple[int, int, bool]:
+    """Sort key: higher match % first, then score, then balanced meal."""
+    return (
+        int(recipe.get("match_percent", 0)),
+        int(recipe.get("score", 0)),
+        bool(recipe.get("has_balanced_meal", False)),
+    )
+
+
+def ranked_matches(buckets: Dict[Tier, List[Dict]]) -> List[Dict]:
+    """Single list of suggestions ordered strictly by match % (high → low).
+
+    Tier badges stay on each card; ordering ignores tier so an 80% "Almost"
+    ranks above a 70% "Ready".
+    """
+    combined: List[Dict] = []
+    for tier in ("ready_now", "almost_there", "shop_run"):
+        for recipe in buckets.get(tier, []):
+            combined.append({**recipe, "tier": tier})
+    combined.sort(key=match_rank_key, reverse=True)
+    return combined
 
 
 def score_and_bucket(
@@ -227,10 +245,7 @@ def score_and_bucket(
             continue
         eligible.append(recipe)
 
-    excluded.sort(
-        key=lambda item: (item.get("match_percent", 0), item.get("score", 0)),
-        reverse=True,
-    )
+    excluded.sort(key=match_rank_key, reverse=True)
     return bucket_recipes(eligible), excluded
 
 

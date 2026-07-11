@@ -7,6 +7,7 @@ from src.matcher import (
     assistant_message,
     calculate_match_score,
     classify_tier,
+    ranked_matches,
     score_and_bucket,
 )
 
@@ -202,6 +203,18 @@ class MatcherTests(unittest.TestCase):
         self.assertGreaterEqual(len(almost), 2)
         percents = [item["match_percent"] for item in almost]
         self.assertEqual(percents, sorted(percents, reverse=True))
+
+    def test_ranked_matches_always_highest_percent_first(self) -> None:
+        """Global suggestion order is match % only — not Ready before Almost."""
+        selected = {"beans", "beef", "onions", "rice", "tomatoes", "vegetable oil", "peppers"}
+        buckets = self.bucket(selected)
+        ranked = ranked_matches(buckets)
+        self.assertGreaterEqual(len(ranked), 2)
+        percents = [item["match_percent"] for item in ranked]
+        self.assertEqual(percents, sorted(percents, reverse=True))
+        # Every entry carries its tier for badges.
+        for item in ranked:
+            self.assertIn(item["tier"], {"ready_now", "almost_there", "shop_run"})
 
     def test_akara_requires_pap_or_bread(self) -> None:
         """Dish is Akara & Pap — side must be modelled, not only mentioned in steps."""

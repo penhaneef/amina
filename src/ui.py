@@ -480,9 +480,64 @@ def render_tier_section(
             unsafe_allow_html=True,
         )
 
-    for index, recipe in enumerate(recipes[:limit]):
+    _render_recipe_list(
+        recipes[:limit],
+        available,
+        images_dir,
+        global_substitutes,
+        display_names,
+        medal_first=True,
+        key_prefix=f"tier_{tier}",
+    )
+
+
+def render_ranked_suggestions(
+    recipes: List[Dict],
+    available: Set[str],
+    images_dir: Path,
+    global_substitutes: Dict[str, List[str]],
+    display_names: Dict[str, str],
+    *,
+    limit: int = 12,
+) -> None:
+    """Render all matches in one list sorted by match % (highest first)."""
+    if not recipes:
+        return
+
+    st.markdown(
+        """
+        <div class="tier-band tier-ready">
+            <p class="tier-title">📊 Suggestions by match %</p>
+            <p class="tier-sub">Highest match first — badges still show Ready / Almost / Shop.</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    _render_recipe_list(
+        recipes[:limit],
+        available,
+        images_dir,
+        global_substitutes,
+        display_names,
+        medal_first=True,
+        key_prefix="ranked",
+    )
+
+
+def _render_recipe_list(
+    recipes: List[Dict],
+    available: Set[str],
+    images_dir: Path,
+    global_substitutes: Dict[str, List[str]],
+    display_names: Dict[str, str],
+    *,
+    medal_first: bool,
+    key_prefix: str,
+) -> None:
+    for index, recipe in enumerate(recipes):
+        tier: Tier = recipe.get("tier") or classify_from_flags(recipe)
         image_path = recipe_image_path(images_dir, recipe)
-        medal = tier == "ready_now" and index == 0
+        medal = medal_first and index == 0
         if image_path:
             img_col, text_col = st.columns([1, 2])
             with img_col:
@@ -492,14 +547,20 @@ def render_tier_section(
         else:
             render_recipe_card(recipe, tier, show_medal=medal, display_names=display_names)
 
-        # Keyed expanders so open/closed state is not mixed across recipe swaps.
         with st.expander(
-            f"Details — {recipe['name']}",
-            expanded=(tier == "ready_now" and index == 0),
-            key=f"details_{tier}_{recipe.get('id', recipe['name'])}",
+            f"Details — {recipe['name']} ({recipe.get('match_percent', 0)}% match)",
+            expanded=(index == 0),
+            key=f"details_{key_prefix}_{recipe.get('id', recipe['name'])}",
         ):
             render_ingredient_breakdown(recipe, available, global_substitutes, display_names)
             render_recipe_steps(recipe)
+
+
+def classify_from_flags(recipe: Dict) -> Tier:
+    """Fallback tier for cards if ``tier`` was not attached."""
+    from src.matcher import classify_tier
+
+    return classify_tier(recipe)
 
 
 def render_excluded(excluded: List[Dict]) -> None:
@@ -578,6 +639,7 @@ __all__ = [
     "render_featured_recipe",
     "render_footer",
     "render_hero",
+    "render_ranked_suggestions",
     "render_shopping_list",
     "render_tier_section",
 ]

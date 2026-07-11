@@ -33,7 +33,7 @@ import streamlit as st
 
 from src.brand import APP_NAME, FAVICON_PATH, TAGLINE
 from src.data_loader import IMAGES_DIR, get_ingredient_config, get_recipes
-from src.matcher import assistant_message, score_and_bucket
+from src.matcher import assistant_message, ranked_matches, score_and_bucket
 from src.pantry import load_saved_pantry, save_pantry
 from src.selection import (
     checkbox_key,
@@ -51,8 +51,8 @@ from src.ui import (
     render_featured_recipe,
     render_footer,
     render_hero,
+    render_ranked_suggestions,
     render_shopping_list,
-    render_tier_section,
 )
 
 _page_icon = str(FAVICON_PATH) if FAVICON_PATH.exists() else "🍲"
@@ -303,6 +303,7 @@ def render_results(filters: dict) -> None:
     ready = buckets["ready_now"]
     almost = buckets["almost_there"]
     shop = buckets["shop_run"]
+    ranked = ranked_matches(buckets)
 
     headline, detail = assistant_message(ready, almost, shop, available)
     chips = "".join(
@@ -318,26 +319,22 @@ def render_results(filters: dict) -> None:
     flat = collect_shopping_items(shop_source, max_recipes=3)
     render_shopping_list(groups, DISPLAY_NAMES, flat_items=flat)
 
-    if not ready and not almost and not shop:
+    if not ranked:
         st.warning("No realistic matches. Add more staples or relax your filters.")
         featured = featured_recipe_of_day()
         if featured:
             render_featured_recipe(featured, IMAGES_DIR)
         return
 
-    render_tier_section(
-        "ready_now", ready, available, IMAGES_DIR, GLOBAL_SUBSTITUTES, DISPLAY_NAMES, limit=5,
+    # Single list: always highest match % first (Ready/Almost/Shop only as badges).
+    render_ranked_suggestions(
+        ranked,
+        available,
+        IMAGES_DIR,
+        GLOBAL_SUBSTITUTES,
+        DISPLAY_NAMES,
+        limit=12,
     )
-    render_tier_section(
-        "almost_there", almost, available, IMAGES_DIR, GLOBAL_SUBSTITUTES, DISPLAY_NAMES, limit=5,
-    )
-
-    if shop:
-        with st.expander(f"Needs a shop run ({len(shop)} dishes) — not ready to cook yet"):
-            render_tier_section(
-                "shop_run", shop, available, IMAGES_DIR, GLOBAL_SUBSTITUTES, DISPLAY_NAMES,
-                show_header=False, limit=8,
-            )
 
 
 # ====================== Main ======================
