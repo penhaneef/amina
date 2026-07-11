@@ -337,20 +337,21 @@
   {
     "id": "akara-pap",
     "name": "Akara & Pap (Quick Breakfast)",
-    "core_ingredients": ["beans", "onions", "peppers", "vegetable oil"],
+    "core_ingredients": ["beans", "onions", "peppers", "vegetable oil", "pap"],
     "other_ingredients": ["seasoning cubes"],
     "measurements": {
       "beans": "2 cups peeled beans",
       "onions": "1 small",
       "peppers": "1–2",
       "vegetable oil": "for deep frying (about 2–3 cups in pan)",
+      "pap": "1–1½ cups dry ogi/akamu (or ready pap for 3 people)",
       "seasoning cubes": "1 cube (optional)"
     },
-    "substitutes": {},
+    "substitutes": {"pap": ["bread", "agege bread"]},
     "time": 25,
     "servings": 3,
     "spice": "Mild",
-    "vibe": "Saturday morning energy. Crispy outside, soft inside — the children will finish theirs fast.",
+    "vibe": "Saturday morning energy. Crispy akara with warm pap — children finish theirs fast.",
     "emoji": "🥯",
     "image": "akara-pap.jpg",
     "region": "General",
@@ -358,10 +359,11 @@
     "budget": true,
     "ramadan": false,
     "steps": [
+      "Make the pap: mix ogi/akamu with a little cold water to a smooth paste, then stir into hot water (or heat gently) until thick and glossy. Sweeten if you like. Keep warm.",
       "Peel beans and blend with peppers and onions to a thick paste.",
       "Whisk in salt and seasoning. The mix should hold its shape.",
       "Drop spoonfuls into hot oil. Fry until deep golden on both sides.",
-      "Drain on paper. Serve with pap (ogi) or bread."
+      "Drain akara on paper. Serve hot with the pap (or soft bread if that is your substitute)."
     ]
   }
 ]

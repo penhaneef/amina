@@ -4,7 +4,7 @@
     "tomatoes", "onions", "peppers", "plantain", "palm oil",
     "garri", "egusi", "vegetable oil"
   ],
-  "carbs": ["rice", "beans", "plantain", "yam", "garri", "egusi", "okra", "pounded yam"],
+  "carbs": ["rice", "beans", "plantain", "yam", "garri", "egusi", "okra", "pounded yam", "pap", "bread"],
   "proteins": ["chicken", "beef", "fish", "stockfish", "crayfish", "beans", "eggs"],
   "meat": ["chicken", "beef"],
   "global_substitutes": {
@@ -18,10 +18,11 @@
     "palm oil": ["vegetable oil"],
     "vegetable oil": ["palm oil"],
     "garri": ["fufu"],
-    "fufu": ["garri", "pounded yam"]
+    "fufu": ["garri", "pounded yam"],
+    "pap": ["bread", "agege bread"]
   },
   "categories": {
-    "Carbs & staples": ["rice", "beans", "plantain", "yam", "garri", "egusi", "okra", "pounded yam"],
+    "Carbs & staples": ["rice", "beans", "plantain", "yam", "garri", "egusi", "okra", "pounded yam", "pap", "bread"],
     "Proteins": ["chicken", "beef", "fish", "stockfish", "crayfish", "eggs"],
     "Vegetables & greens": [
       "tomatoes", "onions", "peppers", "spinach", "cabbage",
@@ -39,6 +40,8 @@
     "garri": "Garri / eba",
     "scent leaves": "Scent leaves (nchuanwu)",
     "utazi": "Utazi leaves",
-    "egusi": "Egusi (melon seeds)"
+    "egusi": "Egusi (melon seeds)",
+    "pap": "Pap (ogi / akamu)",
+    "bread": "Bread (agege / soft bread)"
   }
 }

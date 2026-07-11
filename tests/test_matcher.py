@@ -178,6 +178,34 @@ class MatcherTests(unittest.TestCase):
         buckets = self.bucket(selected)
         self.assertEqual(buckets["ready_now"][0]["id"], "jollof-rice")
 
+    def test_sorts_by_match_percent_within_tier(self) -> None:
+        """Higher % match should rank above a lower % with a bigger raw score."""
+        selected = {"beans", "beef", "onions", "rice", "tomatoes", "vegetable oil"}
+        buckets = self.bucket(selected)
+        almost = buckets["almost_there"]
+        self.assertGreaterEqual(len(almost), 2)
+        percents = [item["match_percent"] for item in almost]
+        self.assertEqual(percents, sorted(percents, reverse=True))
+
+    def test_akara_requires_pap_or_bread(self) -> None:
+        """Dish is Akara & Pap — side must be modelled, not only mentioned in steps."""
+        no_side = self.score(
+            {"beans", "onions", "peppers", "vegetable oil"},
+            "akara-pap",
+        )
+        self.assertIn("pap", no_side["missing_core"])
+        self.assertFalse(no_side["has_core"])
+        with_pap = self.score(
+            {"beans", "onions", "peppers", "vegetable oil", "pap"},
+            "akara-pap",
+        )
+        self.assertTrue(with_pap["has_core"])
+        with_bread = self.score(
+            {"beans", "onions", "peppers", "vegetable oil", "bread"},
+            "akara-pap",
+        )
+        self.assertTrue(with_bread["has_core"])
+
 
 if __name__ == "__main__":
     unittest.main()

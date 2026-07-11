@@ -172,7 +172,12 @@ def bucket_recipes(recipes: List[Dict]) -> Dict[Tier, List[Dict]]:
     for recipe in recipes:
         buckets[classify_tier(recipe)].append(recipe)
 
-    sort_key = lambda item: (item["has_balanced_meal"], item["score"], item["match_percent"])
+    # Highest match % first within a tier (what users read on cards), then score/balance.
+    sort_key = lambda item: (
+        item["match_percent"],
+        item["score"],
+        item["has_balanced_meal"],
+    )
     for tier in ("ready_now", "almost_there", "shop_run"):
         buckets[tier].sort(key=sort_key, reverse=True)
     return buckets
